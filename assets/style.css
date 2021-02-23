@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.wrapper {
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    padding-top: 0px;
+    color: hsl(206, 17%, 28%);
+
+  }
+
+  .title a, ul a {
+      color: black;
+      font-size: 24px;
+  }
+
+.card {
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 5px;
+    border-width: 1px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+    color: hsl(206, 17%, 28%);
+    margin: 30px auto;
+    max-width: 800px;
+    padding: 30px 40px;
+    height: 500px;
+    text-align: center;
+    
+  }
+
+  .banner, .ques_text  {
+    font-size: 36px;
+    padding-bottom: 40px;
+  }
+
+  .description {
+      font-size: 24px;
+      padding: 20px 10px;
+  }
+
+  .start {
+      justify-content: bottom;
+  }
+
+  .card button {
+        border: none;
+        padding: 10px 20px;
+        font-size: 24px;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+        border-radius: 10px;
+        margin: 40px 20px;
+    }
+
+    .card button:hover {
+        background: white;
+        color: black;
+        border: solid;
+        border-radius: 25px;
+        text-shadow: none;
+    }
+
+    .ques_text h2 {
+     font-size: 36px;
+    }
+  
+  .option {
+    padding: 25px 30px;
+    background: lightsteelblue;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.5s ease;
+  }
+
+  .option:hover {
+    background: aliceblue;
+  }
+
+ #question {
+   display: none;
+ }
