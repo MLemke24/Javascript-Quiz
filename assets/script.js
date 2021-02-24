@@ -1,9 +1,12 @@
 var taskIdCounter = 0;
-var content = document.querySelector(".card")
+var content = document.querySelector("card")
 var question = document.querySelector(".banner")
-var start = document.querySelector(".start")
+var start = document.querySelector("start")
 
 var question, answer, choices
+
+
+
 
 
 
@@ -48,10 +51,29 @@ const questionFive = [
     ];
 
 
-// Start quiz
-function startGame(content) {
-    document.getElementById(".card").innerHTML = "";
-};
+    function startGame() {
+        document.getElementById("card").innerHTML = "";
+
+        return startGame;
+    }
+
+    function first (startGame) {
+    var list = document.createElement("li")
+    list.className = "list";
+
+        var one = document.createElement("div");
+        one.className = ".option"
+        one.innerHTML =
+        "<h2 class='ques_text'>" + questionOne.question + "</h2>" + "<div class='optionList'>" + "</div><span class='option'>" + questionOne.choices + "</span>";
+        list.appendChild(one);
+        
+    }
 
 
- content.addEventListener("click", questionOne);
+
+
+
+
+    document.getElementById("start").addEventListener("click", startGame);
+
+
