@@ -37,7 +37,10 @@ const quiz = [
 // Start quiz
 
 function startGame () {
-start.addEventListener("click", question)
+
 }
 
-generateBtn.addEventListener("click", startGame)
+
+
+
+start.addEventListener("click", startGame)
