@@ -25,7 +25,7 @@
       font-size: 24px;
   }
 
-.card, .info_box {
+.card {
     background-color: hsl(0, 0%, 100%);
     border-radius: 5px;
     border-width: 1px;
@@ -93,4 +93,3 @@
     background: aliceblue;
   }
 
- 
