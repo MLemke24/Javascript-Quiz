@@ -54,18 +54,33 @@
 
 <div id="log" class="log">
     <div class="score">
-        <h2 id="score"></h2>
+        <h2 id="score">Your Score:</h2>
     </div>
+
     <div class="highScore">
         <h3 id="highScore"></h3>
     </div>
     <div class="enter">
-    <label></label>
-    <!-- <input type="text" placeholder="Your Initials" name="initials" id="initials"> -->
+        <label></label>
+        <input type="text" placeholder="Your Initials" name="initials" id="initials">
+    </div>
+    <button id="save" class="save">
+        Save
+    </button>
 </div>
-<button id="save" class="save">
-    
-</button>
+
+<div id="finale" class="finale">
+    <div class="yourBest">
+        <h2 id="yourBest">Your Scores</h2>
+    </div>
+    <div class="finalLog">
+        <p id= "initials" class="yourInitials"></p>
+        <p id="highScore" class="yourScore"></p>
+    </div>
+ 
+    <button id="restart" class="restart">
+        Play Again!
+    </button>
 </div>
 
     

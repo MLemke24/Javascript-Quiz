@@ -2,9 +2,10 @@ var content = document.querySelector(".card")
 var question = document.querySelector(".banner")
 var start = document.querySelector(".start")
 var elements = document.getElementsByClassName("answer")
+var save = document.querySelector(".save")
 
 
-var question, answer, choices, answered, time, question_number
+var question, answer, choices, answered, time, question_number, timer
 
 // Questions Array
 let quiz = [
@@ -77,7 +78,7 @@ console.log(question_number)
 document.getElementById("start").addEventListener("click", function(){
 
 
-    var loadTimer = setInterval(function function1(){
+    timer = setInterval(function function1(){
     document.getElementById("time").innerHTML = time + 
     "&nbsp"+"seconds remaining";
 
@@ -87,6 +88,11 @@ document.getElementById("start").addEventListener("click", function(){
         document.getElementById("time").innerHTML = "Time is up!"
     }
     }, 1000);
+
+    // if(question_number >= quiz.length) {
+    //     clearInterval(timer);
+
+    // }
 
     
 });
@@ -121,15 +127,35 @@ function answer_question (event) {
            document.getElementById("highScore").innerHTML = time
        }
    
+    //    return(highScore)
+}
+
+function saveGame() {
+
+    document.getElementById("log").style.display = "none"
+
+    document.getElementById("finale").style.display = "block"
+
+    // Log Score
+
+    var highscore = document.getElementById("highScore").innerHTML 
+   
+    console.log(highscore)
+
+    // Log Initials
+
+    var initials = document.getElementById("initials").value
+
+    console.log(initials)
 
 }
 
-// load high scores page
-
-
-// High Scores Page
-
 start.addEventListener("click", startGame)
+
+save.addEventListener("click", saveGame)
+
+
+
 
 // fix question number count 
 // fix answer log 

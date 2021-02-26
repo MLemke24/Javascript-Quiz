@@ -35,7 +35,7 @@
       font-size: 24px;
   }
 
-.card, .info_box, .log {
+.card, .info_box, .log, .finale {
     background-color: hsl(0, 0%, 100%);
     border-radius: 5px;
     border-width: 1px;
@@ -67,7 +67,7 @@
       justify-content: bottom;
   }
 
-  .card button, .save button {
+  button {
         border: none;
         padding: 10px 20px;
         font-size: 24px;
@@ -78,7 +78,7 @@
         margin: 40px 20px;
     }
 
-    .card button:hover {
+    button:hover {
         background: white;
         color: black;
         border: solid;
@@ -138,7 +138,28 @@
     text-align: center;
   }
 
+  .finale {
+    display: none;
+  }
+
+  .yourBest {
+    padding-bottom: 15px;
+  }
+
+.finalLog {
+  display: flex;
+  justify-content: space-between;
+  font-size: 28px;
+  border-bottom: 1px solid;
+  border-width: 100%;
+  text-align: left;
+  margin: 10px 25px;
+}
+
+
 
   
+
+
 
   
