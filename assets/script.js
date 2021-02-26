@@ -4,9 +4,9 @@ var start = document.querySelector(".start")
 var elements = document.getElementsByClassName("answer")
 
 
-var question, answer, choices, answered, time
+var question, answer, choices, ansanswerwered, time, question_number
 
-var question_number = 0, time = 60
+
 
 
 let quiz = [
@@ -59,7 +59,7 @@ document.getElementById("option-01").innerHTML = quiz[question_number]["choices"
 document.getElementById("option-02").innerHTML = quiz[question_number]["choices"][1]
 document.getElementById("option-03").innerHTML = quiz[question_number]["choices"][2]
 document.getElementById("option-04").innerHTML = quiz[question_number]["choices"][3]
-
+console.log(question_number)
 }
 
 // Load Timer
@@ -72,12 +72,12 @@ document.getElementById("start").addEventListener("click", function(){
 
     time -= 1;
     if(time <= 0){
-        clearInterval(downloadTimer);
+        clearInterval(time);
         document.getElementById("time").innerHTML = "Time is up!"
     }
     }, 1000);
 
-    console.log(time);
+    
 });
   
 
@@ -87,17 +87,25 @@ function answer_question (event) {
 	answered = event.target.innerHTML
 
 	if(answered == quiz[question_number]["answer"]) {
-
+        // console.log("answer")
 	 time++
-	console.log(time)
+	// console.log(answered)
 
 	}
 
 	question_number += 1
 
 	load_question(question_number)
+
+    if (answered === answer) {
+        time += 10
+    } else {
+        time -= 10
+    }
 	
 }
+
+
 
 // High Scores Page
 
