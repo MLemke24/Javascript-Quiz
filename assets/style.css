@@ -49,6 +49,10 @@
     
   }
 
+  #log {
+    display: none;
+  }
+
   .banner, .ques_text  {
     font-size: 36px;
     padding-bottom: 40px;
@@ -63,7 +67,7 @@
       justify-content: bottom;
   }
 
-  .card button  {
+  .card button, .save button {
         border: none;
         padding: 10px 20px;
         font-size: 24px;
