@@ -3,7 +3,7 @@ var question = document.querySelector(".banner")
 var start = document.querySelector(".start")
 var elements = document.getElementsByClassName("answer")
 var save = document.querySelector(".save")
-// var highscorePage = document.querySelector(".hsPage")
+var highscorePage = document.querySelector(".hsPage")
 
 var question, answer, choices, answered, time, question_number, timer, highscore, initials
 
@@ -84,20 +84,17 @@ document.getElementById("start").addEventListener("click", function(){
     time -= 1;
     if(time <= 0){
         clearInterval(time);
-        document.getElementById("time").innerHTML = "Time is up!"
-    }
+        document.getElementById("time").innerHTML = "Game Over!"
+        document.getElementById("questions").style.display = "none"
+        document.getElementById("finale").style.display = "block"
+    };
     }, 1000);
 
-    // if(question_number >= quiz.length) {
-    //     clearInterval(timer);
-
-    // }
-
-    
 });
   
 
 // Question Answered
+
 function answer_question (event) {
 
 	answered = event.target.innerHTML
@@ -108,7 +105,7 @@ function answer_question (event) {
 
 	} else {
 
-        time -= 10
+        time -= 15
     }
 
     question_number += 1
@@ -152,28 +149,36 @@ function saveGame() {
     console.log(initials)
 }
 
-// var storeGame = function() {
-//     localStorage.setItem("yourScore", JSON.stringify(highscore));
-//     localStorage.setItem("yourIntiials", JSON.stringify(initials));
-// }
+// save to local storage
 
-// var loadScores = function() {
-//     var savedGames = localStorage.getItem("yourScore");
-// }
+var storeGame = function() {
+    localStorage.setItem("yourScore", JSON.stringify(highscore));
+    localStorage.setItem("yourIntiials", JSON.stringify(initials));
+}
+
+var loadScores = function() {
+    var savedGames = localStorage.getItem("yourScore");
+}
+
+// High Scores Page
+
+function highscore() {
+    document.getElementsByClass(".card").style.display = "none"
+
+    document.getElementsByClass(".finale").style.display = "block"
+}
+
 
 
 start.addEventListener("click", startGame)
 
 save.addEventListener("click", saveGame)
 
+highscorePage.addEventListener("click", highscore)
 
-// highscorePage.addEventListener("click", highscore)
 
-// function highscore() {
-//     document.getElementById("intro").style.display = "none"
 
-//     document.getElementById("finale").style.display = "block"
-// }
+
 
 
 // fix question number count 
