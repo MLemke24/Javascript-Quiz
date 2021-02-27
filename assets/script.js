@@ -3,9 +3,9 @@ var question = document.querySelector(".banner")
 var start = document.querySelector(".start")
 var elements = document.getElementsByClassName("answer")
 var save = document.querySelector(".save")
+// var highscorePage = document.querySelector(".hsPage")
 
-
-var question, answer, choices, answered, time, question_number, timer
+var question, answer, choices, answered, time, question_number, timer, highscore, initials
 
 // Questions Array
 let quiz = [
@@ -35,7 +35,6 @@ let quiz = [
         answer: "All of the above"
     },
 ];
-
 
 
 // Start Game 
@@ -138,23 +137,43 @@ function saveGame() {
 
     // Log Score
 
-    var highscore = document.getElementById("highScore").innerHTML 
+    highscore = document.getElementById("highScore").innerHTML 
    
+    document.getElementById("yourScore").innerHTML = highscore
+
     console.log(highscore)
 
     // Log Initials
 
-    var initials = document.getElementById("initials").value
+    initials = document.getElementById("initials").value
+
+    document.getElementById("yourInitials").innerHTML = initials
 
     console.log(initials)
-
 }
+
+// var storeGame = function() {
+//     localStorage.setItem("yourScore", JSON.stringify(highscore));
+//     localStorage.setItem("yourIntiials", JSON.stringify(initials));
+// }
+
+// var loadScores = function() {
+//     var savedGames = localStorage.getItem("yourScore");
+// }
+
 
 start.addEventListener("click", startGame)
 
 save.addEventListener("click", saveGame)
 
 
+// highscorePage.addEventListener("click", highscore)
+
+// function highscore() {
+//     document.getElementById("intro").style.display = "none"
+
+//     document.getElementById("finale").style.display = "block"
+// }
 
 
 // fix question number count 
