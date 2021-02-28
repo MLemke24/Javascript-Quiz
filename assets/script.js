@@ -5,6 +5,7 @@ var elements = document.getElementsByClassName("answer")
 var save = document.querySelector(".save")
 var highscorePage = document.querySelector(".hsPage")
 var playAgain = document.querySelector(".restart")
+var again = document.querySelector(".try")
 
 var question, answer, choices, answered, time, question_number, timer, highscore, initials
 
@@ -150,6 +151,10 @@ function saveGame() {
 
     document.getElementById("yourInitials").innerHTML = initials
 
+    if (initials === 0) {
+        window.alert("Not A Valid Response")
+    }
+
     console.log(initials)
 }
 
@@ -172,6 +177,10 @@ var reload = function() {
     location.href = "https://mlemke24.github.io/Javascript-Quiz/";
 };
 
+var tryAgain = function() {
+location.href = "https://mlemke24.github.io/Javascript-Quiz/";
+} 
+
 
 
 start.addEventListener("click", startGame)
@@ -181,6 +190,8 @@ save.addEventListener("click", saveGame)
 highscorePage.addEventListener("click", highscore)
 
 playAgain.addEventListener("click", reload)
+
+again.addEventListener("click", reload)
 
 
 
