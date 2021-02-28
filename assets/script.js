@@ -4,6 +4,7 @@ var start = document.querySelector(".start")
 var elements = document.getElementsByClassName("answer")
 var save = document.querySelector(".save")
 var highscorePage = document.querySelector(".hsPage")
+var playAgain = document.querySelector(".restart")
 
 var question, answer, choices, answered, time, question_number, timer, highscore, initials
 
@@ -20,7 +21,7 @@ let quiz = [
         answer: "concat()"
     },
     {
-        question: "The Function 'isNaN stands for:",
+        question: "The Function 'isNaN' stands for:",
         choices: ["is Not a Name", "is Not a Number", "is Null and null", "None of the above"],
         answer: "is Not a Number"
     },
@@ -31,8 +32,8 @@ let quiz = [
     },
     {
         question: "Which of the following is NOT valid Pop up box:",
-        choices: ["Alert", "Confirm and", "Prompt", "All of the above"],
-        answer: "All of the above"
+        choices: ["Alert", "Confirm and", "Prompt", "None of the above"],
+        answer: "None of the above"
     },
 ];
 
@@ -126,6 +127,9 @@ function answer_question (event) {
     //    return(highScore)
 }
 
+// Play again button
+
+
 function saveGame() {
 
     document.getElementById("log").style.display = "none"
@@ -149,17 +153,6 @@ function saveGame() {
     console.log(initials)
 }
 
-// save to local storage
-
-var storeGame = function() {
-    localStorage.setItem("yourScore", JSON.stringify(highscore));
-    localStorage.setItem("yourIntiials", JSON.stringify(initials));
-}
-
-var loadScores = function() {
-    var savedGames = localStorage.getItem("yourScore");
-}
-
 // High Scores Page
 
 function highscore() {
@@ -167,6 +160,17 @@ function highscore() {
 
     document.getElementsByClass(".finale").style.display = "block"
 }
+
+// save to local storage
+
+// var loadScores = function() {
+//     var savedGames = localStorage.setItem('yourScore', JSON.stringify(storeGame));
+//     const data = JSON.parse(localStorage.getItem('yourScore'));
+// }
+
+var reload = function() {
+    location.href = "https://mlemke24.github.io/Javascript-Quiz/";
+};
 
 
 
@@ -176,7 +180,7 @@ save.addEventListener("click", saveGame)
 
 highscorePage.addEventListener("click", highscore)
 
-
+playAgain.addEventListener("click", reload)
 
 
 
