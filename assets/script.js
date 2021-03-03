@@ -165,32 +165,31 @@ function saveGame() {
 
     document.getElementById("finale").style.display = "block"
 
-    // Log Score
+    // Log Score and Initials 
 
     highscore = document.getElementById("highScore").innerHTML 
+    initials = document.getElementById("initials").value
+    
 
+    // create div and ul's for elements
     var logScore = document.getElementById("finalLog")
 
     var newDiv = document.createElement('div');
-    newDiv.setAttribute('ul', 'yourScore')
-    
 
     logScore.appendChild(newDiv);
-    console.log(newDiv)
+
+    const ulScore = document.createElement('ul')
+    ulScore.setAttribute('id', 'yourScore')
+
+    newDiv.appendChild(ulScore)
    
-console.log(highscore)
+    const ulInitials = document.createElement('ul')
+    ulInitials.setAttribute('id', 'yourInitials')
+
+    newDiv.appendChild(ulInitials)
 
    
   
-
-    // Log Initials
-
-    initials = document.getElementById("initials").value
-    console.log(initials)
-    
-
-   
-
     if (initials === 0) {
         window.alert("Not A Valid Response")
     }
