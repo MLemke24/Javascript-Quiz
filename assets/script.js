@@ -9,6 +9,7 @@ var again = document.querySelector(".try")
 
 var question, answer, choices, answered, time, question_number, timer, highscore, initials, storeGame, loadScore, loadInitials
 
+let storeScore = [];
 
 // Questions Array
 let quiz = [
@@ -73,7 +74,7 @@ document.getElementById("option-04").innerHTML = quiz[question_number]["choices"
 
 
 
-console.log(question_number)
+
 }
 
 // Load Timer
@@ -139,17 +140,25 @@ var loadScores = function() {
 
     document.getElementById('yourInitials').value = loadInitials
 
-    console.log(loadInitials);
-    console.log(loadScore);
+ 
  
    }
 
 
 // Save Game - sets to local storage 
 
-// bring up high scores page
+// Bring up high Scores Page
 
-// make it one array.. stringify and parse the array 
+function highscore() {
+
+    document.getElementById("intro").style.display = "none"
+
+    document.getElementById("finale").style.display = "block"
+
+    console.log("finale")
+}
+
+// Make it one array.. stringify and parse the array 
 
 function saveGame() {
 
@@ -165,7 +174,7 @@ function saveGame() {
 
     localStorage.setItem('yourScore', JSON.stringify(highscore));
 
-    console.log(highscore)
+  
 
     // Log Initials
 
@@ -179,24 +188,9 @@ function saveGame() {
         window.alert("Not A Valid Response")
     }
 
-    console.log(initials)
 
  
 }
-
-// load from local storage
-
-  
-
-// High Scores Page
-
-function highscore() {
-
-    document.getElementById("intro").style.display = "none"
-
-    document.getElementById("finale").style.display = "block"
-}
-
 
 
 var reload = function() {
