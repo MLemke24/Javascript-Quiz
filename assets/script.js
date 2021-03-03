@@ -10,7 +10,7 @@ var again = document.querySelector(".try")
 var question, answer, choices, answered, time, question_number, timer, highscore, initials, storeGame, loadScore, loadInitials
 
 let storeScore = [];
-
+console.log(storeScore)
 // Questions Array
 let quiz = [
     {
@@ -153,9 +153,11 @@ function highscore() {
 
     document.getElementById("intro").style.display = "none"
 
-    document.getElementById("finale").style.display = "block"
+    document.getElementById("finalLog").style.display = "block"
 
-    console.log("finale")
+
+
+   
 }
 
 // Make it one array.. stringify and parse the array 
@@ -168,21 +170,22 @@ function saveGame() {
 
     // Log Score
 
+
+
     highscore = document.getElementById("highScore").innerHTML 
    
-    document.getElementById("yourScore").innerHTML = highscore
+    console.log(highscore)
 
-    localStorage.setItem('yourScore', JSON.stringify(highscore));
-
+   
   
 
     // Log Initials
 
     initials = document.getElementById("initials").value
+    console.log(initials)
+    
 
-    document.getElementById("yourInitials").innerHTML = initials
-
-    localStorage.setItem('yourInitials', JSON.stringify(initials));
+   
 
     if (initials === 0) {
         window.alert("Not A Valid Response")
@@ -190,6 +193,7 @@ function saveGame() {
 
 
  
+
 }
 
 
@@ -224,3 +228,5 @@ again.addEventListener("click", reload)
 // make section for high scores to save 
 // attach high scores at top right to high scores saved
 // add restart game button 
+// localStorage.setItem('yourScore', JSON.stringify(highscore));
+// localStorage.setItem('yourInitials', JSON.stringify(initials));
