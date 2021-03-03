@@ -7,7 +7,7 @@ var highscorePage = document.querySelector(".highscores")
 var playAgain = document.querySelector(".restart")
 var again = document.querySelector(".try")
 
-var question, answer, choices, answered, time, question_number, timer, highscore, initials, storeGame
+var question, answer, choices, answered, time, question_number, timer, highscore, initials, storeGame, loadScore, loadInitials
 
 
 // Questions Array
@@ -129,8 +129,27 @@ function answer_question (event) {
     //    return(highScore)
 }
 
-// Play again button
+var loadScores = function() {
+    
+  loadInitials = JSON.parse(localStorage.getItem('yourInitials'));
 
+  loadScore = JSON.parse(localStorage.getItem('yourScore'));
+
+    document.getElementById('yourScore').innerHTML = loadScore 
+
+    document.getElementById('yourInitials').value = loadInitials
+
+    console.log(loadInitials);
+    console.log(loadScore);
+ 
+   }
+
+
+// Save Game - sets to local storage 
+
+// bring up high scores page
+
+// make it one array.. stringify and parse the array 
 
 function saveGame() {
 
@@ -144,7 +163,7 @@ function saveGame() {
    
     document.getElementById("yourScore").innerHTML = highscore
 
-    localStorage.setItem('yourScore', 'highScore');
+    localStorage.setItem('yourScore', JSON.stringify(highscore));
 
     console.log(highscore)
 
@@ -154,7 +173,7 @@ function saveGame() {
 
     document.getElementById("yourInitials").innerHTML = initials
 
-    localStorage.setItem('yourInitials', 'initials');
+    localStorage.setItem('yourInitials', JSON.stringify(initials));
 
     if (initials === 0) {
         window.alert("Not A Valid Response")
@@ -162,8 +181,12 @@ function saveGame() {
 
     console.log(initials)
 
-    
+ 
 }
+
+// load from local storage
+
+  
 
 // High Scores Page
 
@@ -174,13 +197,7 @@ function highscore() {
     document.getElementById("finale").style.display = "block"
 }
 
-// save to local storage
 
-var loadScores = function() {
-    localStorage.getItem("yourInitials")
-    localStorage.getItem("yourScore")
-    
-}
 
 var reload = function() {
     location.href = "https://mlemke24.github.io/Javascript-Quiz/";
