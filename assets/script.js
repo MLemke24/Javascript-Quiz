@@ -153,11 +153,8 @@ function highscore() {
 
     document.getElementById("intro").style.display = "none"
 
-    document.getElementById("finalLog").style.display = "block"
+    document.getElementById("finale").style.display = "block"
 
-
-
-   
 }
 
 // Make it one array.. stringify and parse the array 
@@ -170,11 +167,18 @@ function saveGame() {
 
     // Log Score
 
-
-
     highscore = document.getElementById("highScore").innerHTML 
+
+    var logScore = document.getElementById("finalLog")
+
+    var newDiv = document.createElement('div');
+    newDiv.setAttribute('ul', 'yourScore')
+    
+
+    logScore.appendChild(newDiv);
+    console.log(newDiv)
    
-    console.log(highscore)
+console.log(highscore)
 
    
   
