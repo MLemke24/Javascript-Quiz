@@ -132,22 +132,68 @@ function answer_question (event) {
 
 var loadScores = function() {
     
-  loadInitials = JSON.parse(localStorage.getItem('yourInitials'));
-
-  loadScore = JSON.parse(localStorage.getItem('yourScore'));
-
-    document.getElementById('yourScore').innerHTML = loadScore 
-
-    document.getElementById('yourInitials').value = loadInitials
-
- 
- 
-   }
-
+    initials = JSON.parse(localStorage.getItem('yourInitials'));
+  
+    highscore = JSON.parse(localStorage.getItem('yourScore'));
+  
+      document.getElementById('yourScore').innerHTML = loadScore 
+  
+      document.getElementById('yourInitials').value = loadInitials
+   
+   
+     }
 
 // Save Game - sets to local storage 
 
-// Bring up high Scores Page
+function saveGame() {
+
+    // Bring Up Scores Page
+
+    document.getElementById("log").style.display = "none"
+
+    document.getElementById("finale").style.display = "block"
+
+    // Place values of High Score and Initials
+
+    highscore = document.getElementById("highScore").innerHTML 
+    
+
+    initials = document.getElementById("initials").value
+   
+
+    // Create div and ul's for elements
+    var logScore = document.getElementById("finalLog")
+
+    // Scores Ul
+
+    const ulScore = document.createElement('ul')
+
+    ulScore.setAttribute('id', 'yourScore')
+    ulScore.textContent = highscore
+
+    logScore.appendChild(ulScore)
+    console.log(ulScore)
+
+    localStorage.setItem("yourScore", JSON.stringify(highscore))
+
+   // Initials Ul
+
+    const ulInitials = document.createElement('ul')
+
+    ulInitials.setAttribute('id', 'yourInitials')
+    ulInitials.textContent = initials
+
+    logScore.appendChild(ulInitials)
+   console.log(ulInitials)
+
+   localStorage.setItem("yourInitials", JSON.stringify(initials))
+
+    if (initials === 0) {
+        window.alert("Not A Valid Response")
+    }
+
+
+ // Bring up high Scores Page
 
 function highscore() {
 
@@ -157,47 +203,9 @@ function highscore() {
 
 }
 
-// Make it one array.. stringify and parse the array 
-
-function saveGame() {
-
-    document.getElementById("log").style.display = "none"
-
-    document.getElementById("finale").style.display = "block"
-
-    // Log Score and Initials 
-
-    highscore = document.getElementById("highScore").innerHTML 
-    initials = document.getElementById("initials").value
-    
-
-    // create div and ul's for elements
-    var logScore = document.getElementById("finalLog")
-
-    var newDiv = document.createElement('div');
-
-    logScore.appendChild(newDiv);
-
-    const ulScore = document.createElement('ul')
-    ulScore.setAttribute('id', 'yourScore')
-
-    newDiv.appendChild(ulScore)
-   
-    const ulInitials = document.createElement('ul')
-    ulInitials.setAttribute('id', 'yourInitials')
-
-    newDiv.appendChild(ulInitials)
-
-   
-  
-    if (initials === 0) {
-        window.alert("Not A Valid Response")
-    }
-
-
- 
 
 }
+  
 
 
 var reload = function() {
@@ -231,5 +239,3 @@ again.addEventListener("click", reload)
 // make section for high scores to save 
 // attach high scores at top right to high scores saved
 // add restart game button 
-// localStorage.setItem('yourScore', JSON.stringify(highscore));
-// localStorage.setItem('yourInitials', JSON.stringify(initials));
