@@ -8,7 +8,7 @@ var playAgain = document.querySelector(".restart")
 var again = document.querySelector(".try")
 var log = document.querySelector(".finalLog")
 
-
+// global variables
 var question, answer, choices, answered, time, question_number, timer, highscore, initials, storeGame, loadScore, loadInitials
 
 
@@ -211,7 +211,7 @@ function highscores() {
 };
   
 
-
+// Reload and try again buttons
 
 var reload = function() {
     location.href = "https://mlemke24.github.io/Javascript-Quiz/";
@@ -222,7 +222,7 @@ location.href = "https://mlemke24.github.io/Javascript-Quiz/";
 } 
 
 
-
+// Event listeners
 start.addEventListener("click", startGame)
 
 save.addEventListener("click", saveGame)
