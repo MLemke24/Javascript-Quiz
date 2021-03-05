@@ -11,10 +11,7 @@ var taskIdCounter = 0;
 
 var question, answer, choices, answered, time, question_number, timer, highscore, initials, storeGame, loadScore, loadInitials
 
-var storeScores = []
-var storeInitials = []
-console.log(storeInitials)
-console.log(storeScores)
+
 // Questions Array
 let quiz = [
     {
@@ -43,6 +40,7 @@ let quiz = [
         answer: "None of the above"
     },
 ];
+
 
 
 // Start Game 
@@ -138,8 +136,6 @@ function answer_question (event) {
        
 }
 
-
-
 // Save Game - sets to local storage 
 
 function saveGame() {
@@ -157,58 +153,66 @@ function saveGame() {
 
     initials = document.getElementById("initials").value
    
-    storeScores.push({Score: highscore})
+    // if (localStorage.getItem("yourScores") === null) {
+        // localStorage.setItem("yourScores", JSON.stringify([]));
+    //     // localStorage.setItem("yourInitials", JSON.stringify([]));
+    // }
 
-    storeInitials.push({Initials: initials})
+    let logScores = JSON.parse(localStorage.getItem("yourScores")) || [];
+    // let logInitials = JSON.parse(localStorage.getItem("yourInitials"))
 
-    // ul's for elements
-    
+    let numbers = {Score: highscore, Initials: initials} 
+  logScores.push(numbers)
+    console.log(logScores)
+    // logInitials.push({Initials: initials})
 
-    for (var i = 0; i < storeScores.length; i++) {
+    setScore(logScores)
+    // displayIntiials(initials)
+
+    localStorage.setItem("yourScores", JSON.stringify(logScores))
+    // localStorage.setItem("yourInitials", logInitials)
+
+};
+
+    function setScore(logScores) {
+
+    for (var i = 0; i < logScores.length; i++) {
         var logScore = document.getElementById("finalLog")
         var ulScores = document.createElement("ul")
         ulScores.setAttribute('id', 'yourScores')
         ulScores.setAttribute("data-task-id", taskIdCounter)
-        ulScores.textContent = storeScores[i].Score
+        ulScores.textContent = logScores[i].Score
 
         finalLog.appendChild(ulScores)
     };
-
-    for (var i = 0; i < storeInitials.length; i++) {
-        var logInitials = document.getElementById("finalLog")
-        var ulInitials = document.createElement("ul")
-        ulInitials.setAttribute('id', 'yourInitials')
-        ulInitials.setAttribute("data-task-id", taskIdCounter)
-        ulInitials.textContent = storeInitials[i].Initials
-
-        finalLog.appendChild(ulInitials)
-
         
     };
 
-    localStorage.setItem('yourScore', JSON.stringify(storeScores))
-    localStorage.setItem('yourInitials', JSON.stringify(storeInitials))
 
-}
+
  // Bring up high Scores Page
 
-function highscores() {
+// function highscores() {
 
-    document.getElementById("intro").style.display = "none"
+//     document.getElementById("intro").style.display = "none"
 
-    document.getElementById("finale").style.display = "block"
+//     document.getElementById("finale").style.display = "block"
 
-    var getScore = JSON.parse(localStorage.getItem("yourScore"));
+//     var getScore = JSON.parse(localStorage.getItem("yourScore"));
+//     console.log(getScore)
 
-    var loadScore = document.getElementById("finalLog")
-    var showScore = document.createElement("ul")
-    showScore.setAttribute('id', 'yourScores')
-    showScore.textContent = getScore.score
     
-    finalLog.appendChild(showScore)
+
+//     var loadScore = document.getElementById("finalLog")
+
+//     var showScore = document.createElement("ul")
+//     showScore.setAttribute('id', 'yourScores')
+//     showScore.textContent = getScore.Score
+    
+//     loadScore.appendChild(showScore)
 
 // Load Info Storage
-// var getInit = JSON.parse(localStorage.getItem());
+
 
 
 
@@ -216,7 +220,7 @@ function highscores() {
   
 
 
-}
+// }
 
 
 
