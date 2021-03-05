@@ -6,11 +6,15 @@ var save = document.querySelector(".save")
 var highscorePage = document.querySelector(".highscores")
 var playAgain = document.querySelector(".restart")
 var again = document.querySelector(".try")
+var log = document.querySelector(".finalLog")
+var taskIdCounter = 0;
 
 var question, answer, choices, answered, time, question_number, timer, highscore, initials, storeGame, loadScore, loadInitials
 
-let storeScore = [];
-console.log(storeScore)
+var storeScores = []
+var storeInitials = []
+console.log(storeInitials)
+console.log(storeScores)
 // Questions Array
 let quiz = [
     {
@@ -118,6 +122,8 @@ function answer_question (event) {
        
         load_question(question_number)
        } else {
+
+        // load input initials page 
            document.getElementById("questions").style.display = "none"
    
            document.getElementById("time").style.display = "none"
@@ -127,21 +133,12 @@ function answer_question (event) {
            document.getElementById("highScore").innerHTML = time
        }
    
-    //    return(highScore)
+      
+       
+       
 }
 
-var loadScores = function() {
-    
-    initials = JSON.parse(localStorage.getItem('yourInitials'));
-  
-    highscore = JSON.parse(localStorage.getItem('yourScore'));
-  
-      document.getElementById('yourScore').innerHTML = loadScore 
-  
-      document.getElementById('yourInitials').value = loadInitials
-   
-   
-     }
+
 
 // Save Game - sets to local storage 
 
@@ -160,51 +157,69 @@ function saveGame() {
 
     initials = document.getElementById("initials").value
    
+    storeScores.push({Score: highscore})
 
-    // Create div and ul's for elements
-    var logScore = document.getElementById("finalLog")
+    storeInitials.push({Initials: initials})
 
-    // Scores Ul
+    // ul's for elements
+    
 
-    const ulScore = document.createElement('ul')
+    for (var i = 0; i < storeScores.length; i++) {
+        var logScore = document.getElementById("finalLog")
+        var ulScores = document.createElement("ul")
+        ulScores.setAttribute('id', 'yourScores')
+        ulScores.setAttribute("data-task-id", taskIdCounter)
+        ulScores.textContent = storeScores[i].Score
 
-    ulScore.setAttribute('id', 'yourScore')
-    ulScore.textContent = highscore
+        finalLog.appendChild(ulScores)
+    };
 
-    logScore.appendChild(ulScore)
-    console.log(ulScore)
+    for (var i = 0; i < storeInitials.length; i++) {
+        var logInitials = document.getElementById("finalLog")
+        var ulInitials = document.createElement("ul")
+        ulInitials.setAttribute('id', 'yourInitials')
+        ulInitials.setAttribute("data-task-id", taskIdCounter)
+        ulInitials.textContent = storeInitials[i].Initials
 
-    localStorage.setItem("yourScore", JSON.stringify(highscore))
+        finalLog.appendChild(ulInitials)
 
-   // Initials Ul
+        
+    };
 
-    const ulInitials = document.createElement('ul')
+    localStorage.setItem('yourScore', JSON.stringify(storeScores))
+    localStorage.setItem('yourInitials', JSON.stringify(storeInitials))
 
-    ulInitials.setAttribute('id', 'yourInitials')
-    ulInitials.textContent = initials
-
-    logScore.appendChild(ulInitials)
-   console.log(ulInitials)
-
-   localStorage.setItem("yourInitials", JSON.stringify(initials))
-
-    if (initials === 0) {
-        window.alert("Not A Valid Response")
-    }
-
-
+}
  // Bring up high Scores Page
 
-function highscore() {
+function highscores() {
 
     document.getElementById("intro").style.display = "none"
 
     document.getElementById("finale").style.display = "block"
 
-}
+    var getScore = JSON.parse(localStorage.getItem("yourScore"));
+
+    var loadScore = document.getElementById("finalLog")
+    var showScore = document.createElement("ul")
+    showScore.setAttribute('id', 'yourScores')
+    showScore.textContent = getScore.score
+    
+    finalLog.appendChild(showScore)
+
+// Load Info Storage
+// var getInit = JSON.parse(localStorage.getItem());
+
+
+
+
+  
 
 
 }
+
+
+
   
 
 
@@ -222,7 +237,7 @@ start.addEventListener("click", startGame)
 
 save.addEventListener("click", saveGame)
 
-highscorePage.addEventListener("click", highscore)
+highscorePage.addEventListener("click", highscores)
 
 playAgain.addEventListener("click", reload)
 
@@ -239,3 +254,27 @@ again.addEventListener("click", reload)
 // make section for high scores to save 
 // attach high scores at top right to high scores saved
 // add restart game button 
+
+    // Scores Ul
+
+//     const ulScore = document.createElement('ul')
+
+//     ulScore.setAttribute('id', 'yourScore')
+//     ulScore.setAttribute('data-task-id', taskIdCounter)
+//     ulScore.textContent = highscore
+
+//     logScore.appendChild(ulScore)
+//     )
+    
+
+    
+
+//    // Initials Ul
+
+//     const ulInitials = document.createElement('ul')
+
+//     ulInitials.setAttribute('id', 'yourInitials')
+//     ulInitials.setAttribute('data-task-id', taskIdCounter)
+//     ulInitials.textContent = initials
+
+//     logScore.appendChild(ulInitials)

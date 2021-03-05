@@ -156,7 +156,10 @@
   margin: 10px 25px;
 }
 
-
+#scores {
+  display: flex;
+  justify-content: space-evenly;
+}
 
   
 
