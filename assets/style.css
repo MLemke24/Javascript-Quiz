@@ -148,12 +148,13 @@
 
 .finalLog {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   font-size: 28px;
   border-bottom: 1px solid;
   border-width: 100%;
-  text-align: left;
   margin: 10px 25px;
+  list-style-type: none;
 }
 
 #scores {
@@ -161,7 +162,15 @@
   justify-content: space-evenly;
 }
 
+.yourScores {
+display: flex;
+flex: 0 0 50%;
+}
+
+.yourInitials {
+  display: flex;
   
+}
 
 
 
