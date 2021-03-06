@@ -7,7 +7,7 @@ var highscorePage = document.querySelector(".highscores")
 var playAgain = document.querySelector(".restart")
 var again = document.querySelector(".try")
 var log = document.querySelector(".finalLog")
-var redo = document.querySelector(".tryAgain")
+
 
 // global variables
 var question, answer, choices, answered, time, question_number, timer, highscore, initials, storeGame, loadScore, loadInitials
@@ -239,7 +239,7 @@ playAgain.addEventListener("click", reload)
 
 again.addEventListener("click", reload)
 
-redo.addEventListener("click", reload)
+
 
 
 
