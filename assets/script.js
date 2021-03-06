@@ -7,6 +7,7 @@ var highscorePage = document.querySelector(".highscores")
 var playAgain = document.querySelector(".restart")
 var again = document.querySelector(".try")
 var log = document.querySelector(".finalLog")
+var redo = document.querySelector(".tryAgain")
 
 // global variables
 var question, answer, choices, answered, time, question_number, timer, highscore, initials, storeGame, loadScore, loadInitials
@@ -81,18 +82,18 @@ document.getElementById("option-04").innerHTML = quiz[question_number]["choices"
 
 // Load Timer
 document.getElementById("start").addEventListener("click", function(){
-
-
     timer = setInterval(function function1(){
+    
     document.getElementById("time").innerHTML = time + 
     "&nbsp"+"seconds remaining";
 
-    time -= 1;
+    time -=1;
+
     if(time <= 0){
         clearInterval(time);
         document.getElementById("time").innerHTML = "Game Over!"
         document.getElementById("questions").style.display = "none"
-        document.getElementById("finale").style.display = "block"
+        window.alert("Game Over! Refresh the page to try again!")
     };
     }, 1000);
 
@@ -152,6 +153,11 @@ function saveGame() {
     
 
     initials = document.getElementById("initials").value
+
+    if (initials <= 0){
+        window.alert("Must put in your Initials")
+        return;
+    }
 
 
     let logScores = JSON.parse(localStorage.getItem("yourScores")) || [];
@@ -232,6 +238,10 @@ highscorePage.addEventListener("click", highscores)
 playAgain.addEventListener("click", reload)
 
 again.addEventListener("click", reload)
+
+redo.addEventListener("click", reload)
+
+
 
 
 
